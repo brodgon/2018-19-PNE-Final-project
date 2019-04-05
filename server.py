@@ -1,7 +1,10 @@
 import http.client
 import json
+import http.server
+import socketserver
+import termcolor
 
-
+PORT = 8000
 HOSTNAME = 'rest.ensembl.org'
 METHOD = "GET"
 ENDPOINT = "/info/species?content-type=application/json"
@@ -13,7 +16,8 @@ headers = {'User-Agent': 'http-client'}
 
 def connect_ensembl_karyotype(ENDPOINT_K):
     conn = http.client.HTTPSConnection(HOSTNAME)
-    specie= input("Introduce specie: ")
+    specie = input("Introduce specie: ")
+    specie = specie.replace(" ", "_")
     conn.request(METHOD, ENDPOINT_K+specie+"?content-type=application/json", None, headers)
     r1 = conn.getresponse()
     print()
@@ -53,11 +57,74 @@ def get_info_species(species_json):
 
     return species_Name
 
-species_json = connect_ensembl_species(ENDPOINT)
+
+class TestHandler(http.server.BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        print("GET Received")
+        print("Request line" + self.requestline)
+        print("     Cnd:  " + self.command)
+        print("Path:    " + self.path)
+
+        termcolor.cprint(self.requestline, 'blue')
+        if self.path == "/":
+            with open("main_page.html", "r") as c:
+                content = c.read()
+        elif "/listSpecies" in self.path:
+            species_json = connect_ensembl_species(ENDPOINT)
+            info = get_info_species(species_json)
+            if "limit" in self.path:
+                limit = int(self.path[self.path.find("=")+1:])
+                info1 = "We will show " + str(limit)+ " of " + str(len(info)) + " species available:"
+                info2 = " "
+                for num in range(limit):
+                    info2 += "\t" + info[num] + "   " + "\n"
+            else:
+                info1 = "List of available species:" + "\n"
+                info2 = " "
+                for i in info:
+                    info2 += "\t" + i + "\n"
+
+            with open("listSpecies.html", "r") as f:
+                content = f.read().format(info1,info2)
+                f.close()
+
+        # -- We want to generate a response message with the following command
+        self.send_response(200)
+
+        # --- Now we will define the content type and the header
+        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Length', len(str.encode(content)))
+
+        # We now finish the header
+        self.end_headers()
+
+        # We will now send the body of the response se message
+        self.wfile.write(str.encode(content))
+
+
+Handler = TestHandler
+
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+
+    print("Serving at PORT", PORT)
+
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("")
+        print("Stopped by the user")
+        httpd.server_close()
+
+print("")
+print("Server Stopped")
+
+
+"""species_json = connect_ensembl_species(ENDPOINT)
 info = get_info_species(species_json)
 print("Available species:")
 for i in info:
-    print("\t", i, end="\n")
+    print("\t", i, end="\n")"""
 karyotype = connect_ensembl_karyotype(ENDPOINT_K)
 
 chromosomes_name = []
