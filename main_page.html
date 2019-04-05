@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <title>Main</title>
 </head>
-<body style="background-color: mistyrose">
+<body style="background-color: lavender">
   <h1>Main page final project </h1>
-<p>Click on the page you want to access</p>
-<a href="listSpecies">Species</a>
-<a href="blue.html">[Blue page]</a>
-<a href="pink.html">[Pink page]</a>
-
-</body>
-</html>
+  <h2>Blanca Rodríguez González (47588293M)</h2>
+  <h1>WELCOME TO THE GENOME PROJECT!</h1>
+<p>What information do you want to get?</p>
+  <form action = "listSpecies" >
+      SPECIES LIST:
+    How many species do you want to know about? (optional)
+    <input type="text" name="limit">
+     <br><br>
+      <input type="submit" value="Get species info">
+  </form>
+    <form action = "karyotype">
+      Karyotype:
+    What specie's karyotype do you want to know?
+    <input type="text" name="specie">
+     <br><br>
+      <input type="submit" value="Get karyotype ">
+  </form>
+    <form action = "chromosomeLength">
+      Chromosome length:
+    What specie's chromosome do you want to know the length?
+        Introduce the specie
+    <input type="text" name="specie">
+     <br><br>
+        Introduce the number of chromosome
+        <input type="text" name="chromo">
+     <br><br>
+      <input type="submit" value="Get length ">
+  </form>

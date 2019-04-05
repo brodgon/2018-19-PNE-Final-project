@@ -2,9 +2,11 @@ import http.client
 import json
 import http.server
 import socketserver
-import termcolor
+
 
 PORT = 8000
+socketserver.TCPServer.allow_reuse_address = True
+
 HOSTNAME = 'rest.ensembl.org'
 METHOD = "GET"
 ENDPOINT = "/info/species?content-type=application/json"
@@ -14,9 +16,8 @@ ENDPOINT_K = "/info/assembly/"
 headers = {'User-Agent': 'http-client'}
 
 
-def connect_ensembl_karyotype(ENDPOINT_K):
+def connect_ensembl_karyotype(specie):
     conn = http.client.HTTPSConnection(HOSTNAME)
-    specie = input("Introduce specie: ")
     specie = specie.replace(" ", "_")
     conn.request(METHOD, ENDPOINT_K+specie+"?content-type=application/json", None, headers)
     r1 = conn.getresponse()
@@ -27,10 +28,10 @@ def connect_ensembl_karyotype(ENDPOINT_K):
     text_json = r1.read().decode("utf-8")
     conn.close()
     Karyotype = json.loads(text_json)
-    chromosomes = Karyotype['top_level_region']
 
 
-    return chromosomes
+
+    return Karyotype
 
 
 def connect_ensembl_species(ENDPOINT):
@@ -66,28 +67,67 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         print("     Cnd:  " + self.command)
         print("Path:    " + self.path)
 
-        termcolor.cprint(self.requestline, 'blue')
+        print(self.requestline)
         if self.path == "/":
             with open("main_page.html", "r") as c:
                 content = c.read()
-        elif "/listSpecies" in self.path:
+        elif "listSpecies" in self.path:
             species_json = connect_ensembl_species(ENDPOINT)
             info = get_info_species(species_json)
             if "limit" in self.path:
-                limit = int(self.path[self.path.find("=")+1:])
-                info1 = "We will show " + str(limit)+ " of " + str(len(info)) + " species available:"
-                info2 = " "
-                for num in range(limit):
-                    info2 += "\t" + info[num] + "   " + "\n"
+                limit = self.path[self.path.find("=")+1:]
+                if limit == '':
+                    info1 = "List of available species:" + "\n"
+                    info2 = " "
+                    for i in info:
+                        info2 += "\t" + i + "\n"
+                else:
+                    limit=int(limit)
+                    info1 = "We will show " + str(limit)+ " of " + str(len(info)) + " species available:"
+                    info2 = " "
+                    for num in range(limit):
+                        info2 += "\t" + info[num] + ";" + "\n"
             else:
                 info1 = "List of available species:" + "\n"
-                info2 = " "
+                info2 = []
                 for i in info:
                     info2 += "\t" + i + "\n"
 
             with open("listSpecies.html", "r") as f:
                 content = f.read().format(info1,info2)
                 f.close()
+
+        elif "/karyotype" in self.path:
+            specie = self.path[self.path.find("=")+1:]
+            Karyotype = connect_ensembl_karyotype(specie)
+            karyotype = Karyotype['karyotype']
+            chromosomes_name = ""
+            for i in range(len(karyotype)):
+                chromosomes_name += karyotype[i] + "\n"
+            info1 = "The karyotype for the specie is:"
+
+            with open("karyotype.html", "r") as f:
+                content = f.read().format(info1,chromosomes_name)
+                f.close()
+
+        elif "/chromosomeLength" in self.path:
+            specie = self.path[self.path.find("=") + 1:self.path.find("&")]
+            Karyotype = connect_ensembl_karyotype(specie)
+            karyotype = Karyotype['top_level_region']
+            chromosomes_length = []
+            for i in range(len(karyotype)):
+                chromosomes_length.append(karyotype[i]['length'])
+            number = int(self.path[self.path.find("o=")+2:])
+            length = chromosomes_length[number -1]
+            message = "The length of your chromosome is: "+ str(length)
+            with open("chromosomelength.html", "r") as f:
+                content = f.read().format(message)
+                f.close()
+        else:
+            with open("error.html", "r") as c:
+                content = c.read()
+
+
 
         # -- We want to generate a response message with the following command
         self.send_response(200)
@@ -101,6 +141,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         # We will now send the body of the response se message
         self.wfile.write(str.encode(content))
+
+
 
 
 Handler = TestHandler
@@ -118,30 +160,6 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
 
 print("")
 print("Server Stopped")
-
-
-"""species_json = connect_ensembl_species(ENDPOINT)
-info = get_info_species(species_json)
-print("Available species:")
-for i in info:
-    print("\t", i, end="\n")"""
-karyotype = connect_ensembl_karyotype(ENDPOINT_K)
-
-chromosomes_name = []
-for i in range(len(karyotype)):
-    chromosomes_name.append(karyotype[i]["name"])
-chromosomes_length = []
-for i in range(len(karyotype)):
-    chromosomes_length.append(karyotype[i]["length"])
-print("The karyotype for the specie is:")
-for i in chromosomes_name:
-    print("\t", i, end="\n")
-number = int(input("Chromosomes number info:"))
-print("The length of your chromosome is: {}".format(chromosomes_length[number-1]))
-
-
-
-
 
 
 
