@@ -1,36 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Genome</title>
+
+
 </head>
-<body style="background-color: lavender">
-  <h1>Main page final project </h1>
-  <h2>Blanca Rodríguez González (47588293M)</h2>
-  <h1>WELCOME TO THE GENOME PROJECT!</h1>
-<p>What information do you want to get?</p>
+
+ <body style="background-color:lavender">
+  <h1 style="color:darkblue;font-family:arial;font-size:300%;text-align:center"> WELCOME TO THE GENOME PROJECT!</h1>
+<h2 style="color:darkblue;font-family:arial;font-size:150%;text-align:center">What information do you want to get?</h2>
+<p></p>
+  <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Species List</legend>
   <form action = "listSpecies" >
-      SPECIES LIST:
     How many species do you want to know about? (optional)
-    <input type="text" name="limit">
-     <br><br>
-      <input type="submit" value="Get species info">
+    <input type="text" name="limit" style="color:navy;background-color:aliceblue">
+      <p style="color:navy">Limit must be an integer number!</p>
+     <br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get species info">
   </form>
+      </fieldset>
+  <p></p>
+  <fieldset>
+  <legend style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Karyotype</legend>
     <form action = "karyotype">
-      Karyotype:
     What specie's karyotype do you want to know?
-    <input type="text" name="specie">
+    <input type="text" name="specie" style="color:navy;background-color:aliceblue">
      <br><br>
-      <input type="submit" value="Get karyotype ">
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get karyotype ">
   </form>
+  </fieldset>
+  <p></p>
+  <fieldset>
+  <legend style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Chromosome Length</legend>
     <form action = "chromosomeLength">
-      Chromosome length:
-    What specie's chromosome do you want to know the length?
-        Introduce the specie
-    <input type="text" name="specie">
+   <p >What specie's chromosome do you want to know the length?</p>
+        Introduce the specie:
+    <input type="text" name="specie" style="color:navy;background-color:aliceblue">
      <br><br>
         Introduce the number of chromosome
-        <input type="text" name="chromo">
+        <input type="text" name="chromo" style="color:navy;background-color:aliceblue">
      <br><br>
-      <input type="submit" value="Get length ">
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get length ">
   </form>
+      </fieldset>
+  <p></p>
+ <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Main page final project </h3>
+  <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Blanca Rodriguez Gonzalez (47588293M)</h3>
+
+</body>
+</html>
