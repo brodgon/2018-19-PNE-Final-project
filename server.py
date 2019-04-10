@@ -18,7 +18,6 @@ headers = {'User-Agent': 'http-client'}
 
 def connect_ensembl_karyotype(specie):
     conn = http.client.HTTPSConnection(HOSTNAME)
-    #specie = specie.replace("+", "_")
     conn.request(METHOD, ENDPOINT_K+specie+"?content-type=application/json", None, headers)
     r1 = conn.getresponse()
     print()
@@ -109,9 +108,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif "/karyotype" in path:
             specie = path[path.find("=")+1:]
             specie = specie.replace('+','')
-            print(specie)
             Karyotype = connect_ensembl_karyotype(specie)
-            print(Karyotype)
             info1 = specie
             chromosomes_name = ""
             if 'karyotype' in Karyotype:
@@ -128,16 +125,27 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif "/chromosomeLength" in self.path:
             specie = self.path[self.path.find("=") + 1:self.path.find("&")]
             Karyotype = connect_ensembl_karyotype(specie)
+
             if 'top_level_region' in Karyotype:
+                main_kary = Karyotype['karyotype']
                 karyotype = Karyotype['top_level_region']
                 print(karyotype)
-                chromosomes_length = []
-                for i in range(len(karyotype)):
-                    chromosomes_length.append(karyotype[i]['length'])
-                number = int(self.path[self.path.find("o=")+2:])
-                length = chromosomes_length[number -1]
-                msg= "Length for chromosome "+str(number)+" of "+ specie +" is "
-                message = str(length)
+                number = str(self.path[self.path.find("o=") + 2:])
+                if len(main_kary) >= int(number):
+                    for i in karyotype:
+                        if i['name'] == number:
+                            length = i['length']
+                            break
+                        else:
+                            length = 'Not found'
+                    msg = "Length for chromosome " + str(number) + " of " + specie + " is "
+                    message = str(length)
+
+                elif len(main_kary)< int(number):
+                    msg = 'Chromosome not found'
+                    message = 'Only numbers up to ' + str(len(main_kary)) + ' available'
+
+
             else:
                 msg= "Can´t find karyotype for "+specie
                 message= "Unknown"
@@ -160,8 +168,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         # We will now send the body of the response se message
         self.wfile.write(str.encode(content))
-
-
 
 
 Handler = TestHandler
