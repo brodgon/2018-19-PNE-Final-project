@@ -1,0 +1,566 @@
+BASIC LEVEL REPORT
+First we open the main page: direction = http://localhost:8000/
+We obtain the following output:
+----MAIN PAGE [http://localhost:8000/]-----------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genome</title>
+</head>
+ <body style="background-color:lavender">
+  <h1 style="color:darkblue;font-family:arial;font-size:300%;text-align:center"> WELCOME TO THE GENOME PROJECT!</h1>
+<h2 style="color:darkblue;font-family:arial;font-size:150%;text-align:center">We are getting human and vertebrates information!</h2>
+  <fieldset>
+  <legend style = "color:slateblue; font-family:arial,font-size:150%"> Species general information</legend>
+<p></p>
+  <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Species List</legend>
+  <form action = "listSpecies" >
+    How many species do you want to know about? (optional)
+    <input type="text" name="limit" style="color:navy;background-color:aliceblue">
+      <p style="color:navy">Limit must be an integer number!</p>
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get species list">
+  </form>
+      </fieldset>
+  <p></p>
+  <fieldset>
+  <legend style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Karyotype</legend>
+    <form action = "karyotype">
+    What specie's karyotype do you want to know?
+    <input type="text" name="specie" style="color:navy;background-color:aliceblue">
+       <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get specie's karyotype ">
+  </form>
+  </fieldset>
+  <p></p>
+  <fieldset>
+  <legend style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Chromosome Length</legend>
+    <form action = "chromosomeLength">
+   <p >What specie's chromosome do you want to know the length?</p>
+        Introduce the specie:
+    <input type="text" name="specie" style="color:navy;background-color:aliceblue">
+     <br><br>
+        Introduce the number of chromosome
+        <input type="text" name="chromo" style="color:navy;background-color:aliceblue">
+        <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get length for the chromosome">
+  </form>
+      </fieldset>
+      </fieldset>
+  <p></p>
+  <br>
+  <fieldset>
+      <legend style = "color:slateblue; font-family:arial,font-size:150%"> Human genes information</legend>
+      <p></p>
+        <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Sequence of a human gene</legend>
+  <form action = "geneSeq" >
+    Which human gene are you willing to get its sequence?
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
+     <br><br>
+       <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene sequence">
+  </form>
+      </fieldset>
+  <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene info</legend>
+  <form action = "geneInfo" >
+    Which human gene do you want to know some information about?
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
+    <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene info">
+  </form>
+      </fieldset>
+
+  <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene calculations</legend>
+  <form action = "geneCalc" >
+    Which human gene do you want to know it's sequence information?
+      <br><br>
+      <p style="color=navy">You will get the length and the bases percentage of the gene's sequence</p>
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene calculations">
+  </form>
+      </fieldset>
+        <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene List</legend>
+  <form action = "geneList" >
+    For which chromosome do you want to obtain its' genes?
+      <br><br>
+      <p style="color=navy">You must introduce a chromosome number for humans and the region you want to iterate (start and end)</p>
+    Chromosome number
+      <input type="text" name="chromo" style="color:navy;background-color:aliceblue">
+     <br><br>
+      Start of the region
+      <input type="text" name="start" style="color:navy;background-color:aliceblue">
+     <br><br>
+      End of region
+      <input type="text" name="end" style="color:navy;background-color:aliceblue">
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene list">
+  </form>
+      </fieldset>
+  </fieldset>
+ <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Main page final project </h3>
+  <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Blanca Rodriguez Gonzalez(47588293M)</h3>
+</body>
+</html>
+ ----------------------------------------------------------------------------------------------------------------------
+ ----------------------------------------------------------------------------------------------------------------------
+ Now we will check /listSpecies is working properly
+------------------------------------------------------------------------------------------------------------------------
+ The main page is asking us to introduce a limit; first we will not introduce anytihng. direction = (http://localhost:8000/listSpecies?limit=)
+ We obtain the following output
+ -- Output to [http://localhost:8000/listSpecies?limit=] ---------------------------------------------------------------
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species list</title>
+</head>
+<body style="background-color: mistyrose">
+  <h1 style="color:deeppink;font-family:arial;font-size:200%;text-align:center">Species list</h1>
+  <h2 style="color:deeppink;font-family:arial;font-size:100%;text-align:center">Showing all available species:
+</h2>
+  <fieldset>
+  <legend style="color:hotpink;font-family:arial;font-size:100%">Species common name</legend>
+   <p >1.) Golden Hamster also known as Golden Hamster<br>2.) Human also known as human<br>3.) Opossum also known as gray short-tailed opossum<br>4.) Orange clownfish also known as orange clownfish<br>5.) Cod also known as Atlantic cod<br>6.) Hyrax also known as cape rock hyrax<br>7.) Armadillo also known as nine-banded armadillo<br>8.) Ocean sunfish also known as ocean sunfish<br>9.) Mouse C57BL/6NJ also known as house mouse<br>10.) Polar bear also known as Polar bear<br>11.) Platypus also known as platypus<br>12.) Megabat also known as large flying fox<br>13.) Turbot also known as turbot<br>14.) Lesser hedgehog tenrec also known as small Madagascar hedgehog<br>15.) Ma's night monkey also known as Ma's night monkey<br>16.) Alpine marmot also known as Alpine marmot<br>17.) Arctic ground squirrel also known as Arctic ground squirrel<br>18.) Platyfish also known as southern platyfish<br>19.) Japanese medaka HSOK also known as Japanese medaka HSOK<br>20.) Ballan wrasse also known as ballan wrasse<br>21.) Northern pike also known as northern pike<br>22.) Lamprey also known as sea lamprey<br>23.) Climbing perch also known as climbing perch<br>24.) Chinese hamster CriGri also known as Chinese hamster<br>25.) Zebra mbuna also known as zebra mbuna<br>26.) Chinese hamster CHOK1GS also known as Chinese hamster<br>27.) Mongolian gerbil also known as Mongolian gerbil<br>28.) American beaver also known as American beaver<br>29.) Little spotted kiwi also known as little spotted kiwi<br>30.) Lyretail cichlid also known as lyretail cichlid<br>31.) Monterrey platyfish also known as Monterrey platyfish<br>32.) Mouse WSB/EiJ also known as western european house mouse<br>33.) Blue tit also known as blue tit<br>34.) Bushbaby also known as small-eared galago<br>35.) Mouse CBA/J also known as house mouse<br>36.) Goat also known as Goat<br>37.) Golden snub-nosed monkey also known as Golden snub-nosed monkey<br>38.) Tongue sole also known as tongue sole<br>39.) Pig-tailed macaque also known as Pig-tailed macaque<br>40.) Shortfin molly also known as shortfin molly<br>41.) Naked mole-rat female also known as naked mole-rat<br>42.) Cat also known as domestic cat<br>43.) Helmeted guineafowl also known as helmeted guineafowl<br>44.) Tiger also known as Tiger<br>45.) Leopard also known as leopard<br>46.) Sloth also known as Hoffmann's two-fingered sloth<br>47.) Daurian ground squirrel also known as Daurian ground squirrel<br>48.) Guppy also known as guppy<br>49.) Shrew mouse also known as Shrew mouse<br>50.) Mouse Lemur also known as gray mouse lemur<br>51.) Eastern happy also known as eastern happy<br>52.) Alpaca also known as alpaca<br>53.) Drill also known as Drill<br>54.) Dark-eyed junco also known as dark-eyed junco<br>55.) Wallaby also known as tammar wallaby<br>56.) Cow also known as cattle<br>57.) Golden-collared manakin also known as golden-collared manakin<br>58.) Chimpanzee also known as chimpanzee<br>59.) Tasmanian devil also known as Tasmanian devil<br>60.) Prairie vole also known as vole<br>61.) Spoon-billed sandpiper also known as Spoon-billed sandpiper<br>62.) Red-bellied piranha also known as red-bellied piranha<br>63.) Marmoset also known as white-tufted-ear marmoset<br>64.) Rat also known as Norway rat<br>65.) C.savignyi also known as Sea squirt Ciona savignyi<br>66.) Lesser Egyptian jerboa also known as Lesser Egyptian jerboa<br>67.) Hedgehog also known as western European hedgehog<br>68.) Bicolor damselfish also known as bicolor damselfish<br>69.) Swamp eel also known as swamp eel<br>70.) Tiger tail seahorse also known as tiger tail seahorse<br>71.) Panda also known as giant panda<br>72.) White-throated sparrow also known as white-throated sparrow<br>73.) Stickleback also known as three-spined stickleback<br>74.) Western mosquitofish also known as western mosquitofish<br>75.) Algerian mouse also known as algerian mouse<br>76.) Pig also known as pig<br>77.) Burton's mouthbrooder also known as Burton's mouthbrooder<br>78.) Agassiz's desert tortoise also known as Agassiz's desert tortoise<br>79.) Bonobo also known as bonobo<br>80.) Xenopus also known as western clawed frog<br>81.) Saccharomyces cerevisiae also known as baker's yeast<br>82.) Mouse A/J also known as house mouse<br>83.) Mouse 129S1/SvImJ also known as house mouse<br>84.) Greater amberjack also known as greater amberjack<br>85.) Emu also known as emu<br>86.) Mexican tetra also known as Mexican tetra<br>87.) C.intestinalis also known as Sea squirt Ciona intestinalis<br>88.) Gibbon also known as Northern white-cheeked gibbon<br>89.) Steppe mouse also known as steppe mouse<br>90.) Abingdon island giant tortoise also known as Abingdon island giant tortoise<br>91.) Channel catfish also known as channel catfish<br>92.) Capuchin also known as White-headed capuchin<br>93.) Long-tailed chinchilla also known as Long-tailed chinchilla<br>94.) Mouse NOD/ShiLtJ also known as house mouse<br>95.) Angola colobus also known as Angola colobus<br>96.) Anole lizard also known as green anole<br>97.) Bengalese finch also known as Bengalese finch<br>98.) Horse also known as horse<br>99.) Degu also known as Degu<br>100.) Periophthalmus magnuspinnatus also known as Periophthalmus magnuspinnatus<br>101.) Mainland tiger snake also known as mainland tiger snake<br>102.) Drosophila melanogaster also known as fruit fly<br>103.) Argentine black and white tegu also known as Argentine black and white tegu<br>104.) Squirrel also known as thirteen-lined ground squirrel<br>105.) Red fox also known as red fox<br>106.) Chinese hamster PICR also known as Chinese hamster<br>107.) Black snub-nosed monkey also known as Black snub-nosed monkey<br>108.) Mouse C3H/HeJ also known as house mouse<br>109.) Mouse FVB/NJ also known as house mouse<br>110.) Microbat also known as little brown bat<br>111.) Coelacanth also known as coelacanth<br>112.) Japanese medaka HNI also known as Japanese medaka HNI<br>113.) Painted turtle also known as Western painted turtle<br>114.) Duck also known as common mallard<br>115.) Japanese quail also known as Japanese quail<br>116.) Rabbit also known as rabbit<br>117.) Greater bamboo lemur also known as greater bamboo lemur<br>118.) Okarito brown kiwi also known as Okarito brown kiwi<br>119.) Wild yak also known as wild yak<br>120.) Mouse BALB/cJ also known as house mouse<br>121.) Elephant also known as African savanna elephant<br>122.) Sheepshead minnow also known as sheepshead minnow<br>123.) Midas cichlid also known as Midas cichlid<br>124.) Spiny chromis also known as spiny chromis<br>125.) Tilapia also known as Nile tilapia<br>126.) Shrew also known as European shrew<br>127.) Paramormyrops kingsleyae also known as Paramormyrops kingsleyae<br>128.) Pika also known as American pika<br>129.) Koala also known as koala<br>130.) Crab-eating macaque also known as Crab-eating macaque<br>131.) Asian bonytongue also known as Asian bonytongue<br>132.) Tree Shrew also known as northern tree shrew<br>133.) Coquerel's sifaka also known as Coquerel's sifaka<br>134.) Pink-footed goose also known as pink-footed goose<br>135.) Caenorhabditis elegans also known as C.elegans<br>136.) Mouse PWK/PhJ also known as eastern european house mouse<br>137.) Dolphin also known as bottlenosed dolphin<br>138.) Olive baboon also known as Olive baboon<br>139.) Ruff also known as ruff<br>140.) Vervet-AGM also known as African green monkey<br>141.) American bison also known as American bison<br>142.) Dog also known as dog<br>143.) Mouse AKR/J also known as house mouse<br>144.) Common canary also known as common canary<br>145.) Turkey also known as domestic turkey<br>146.) Donkey also known as donkey<br>147.) Ryukyu mouse also known as Ryukyu mouse<br>148.) Chilean tinamou also known as birds<br>149.) Great spotted kiwi also known as Great spotted kiwi<br>150.) Sooty mangabey also known as Sooty mangabey<br>151.) Naked mole-rat male also known as naked mole-rat<br>152.) Mouse also known as house mouse<br>153.) Clown anemonefish also known as clown anemonefish<br>154.) Great Tit also known as Great Tit<br>155.) Damara mole rat also known as Damara mole rat<br>156.) Gelada also known as gelada<br>157.) Sheep also known as Domestic sheep<br>158.) Yellowtail amberjack also known as yellowtail amberjack<br>159.) Central bearded dragon also known as central bearded dragon<br>160.) Indian medaka also known as Indian medaka<br>161.) Mouse LP/J also known as house mouse<br>162.) Gorilla also known as Western Lowland Gorilla<br>163.) American black bear also known as American black bear<br>164.) Japanese medaka HdrR also known as Japanese medaka HdrR<br>165.) Ugandan red Colobus also known as Ugandan red Colobus<br>166.) Mouse DBA/2J also known as house mouse<br>167.) Brazilian guinea pig also known as Brazilian guinea pig<br>168.) Fugu also known as torafugu<br>169.) Zebrafish also known as zebrafish<br>170.) Blue-crowned manakin also known as blue-crowned manakin<br>171.) Hagfish also known as Inshore hagfish<br>172.) Zebra Finch also known as zebra finch<br>173.) Guinea Pig also known as domestic guinea pig<br>174.) Orangutan also known as Bornean orangutan<br>175.) Budgerigar also known as Budgie<br>176.) Tarsier also known as Philippine tarsier<br>177.) Mummichog also known as mummichog<br>178.) Macaque also known as rhesus monkey<br>179.) Mouse CAST/EiJ also known as south eastern house mouse<br>180.) Northern American deer mouse also known as Northern American deer mouse<br>181.) Kangaroo rat also known as Ord's kangaroo rat<br>182.) Dingo also known as dingo<br>183.) Zig-zag eel also known as zig-zag eel<br>184.) Chinese softshell turtle also known as Chinese softshell turtle<br>185.) Makobe Island cichlid also known as Makobe Island cichlid<br>186.) Chicken also known as chicken<br>187.) Flycatcher also known as Collared flycatcher<br>188.) Mangrove rivulus also known as mangrove rivulus<br>189.) Mouse NZO/HlLtJ also known as house mouse<br>190.) Spotted gar also known as Spotted gar<br>191.) American mink also known as American mink<br>192.) Tuatara also known as tuatara<br>193.) Bolivian squirrel monkey also known as Bolivian squirrel monkey<br>194.) Ferret also known as Domestic ferret<br>195.) Tetraodon also known as spotted green pufferfish<br>196.) Amazon molly also known as Amazon molly<br>197.) Sailfin molly also known as sailfin molly<br>198.) Upper Galilee mountains blind mole rat also known as Upper Galilee mountains blind mole rat<br>199.) Australian saltwater crocodile also known as Australian saltwater crocodile<br></p>
+</fieldset>
+  <a style=" color:#99004C" href="/">Main page</a>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+Now we are going to introduce a limit for the list. direction = http://localhost:8000/listSpecies?limit=14
+We obtain the following output:
+-- [http://localhost:8000/listSpecies?limit=14] --------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species list</title>
+</head>
+<body style="background-color: mistyrose">
+  <h1 style="color:deeppink;font-family:arial;font-size:200%;text-align:center">Species list</h1>
+  <h2 style="color:deeppink;font-family:arial;font-size:100%;text-align:center">We will show 14 of 199 species available:</h2>
+  <fieldset>
+  <legend style="color:hotpink;font-family:arial;font-size:100%">Species common name</legend>
+   <p >1.) Mouse also known as house mouse<br>2.) Human also known as human<br>3.) Guinea Pig also known as domestic guinea pig<br>4.) Mouse CBA/J also known as house mouse<br>5.) Midas cichlid also known as Midas cichlid<br>6.) Anole lizard also known as green anole<br>7.) Capuchin also known as White-headed capuchin<br>8.) Ballan wrasse also known as ballan wrasse<br>9.) Leopard also known as leopard<br>10.) Fugu also known as torafugu<br>11.) Black snub-nosed monkey also known as Black snub-nosed monkey<br>12.) Zig-zag eel also known as zig-zag eel<br>13.) Blue-crowned manakin also known as blue-crowned manakin<br>14.) Damara mole rat also known as Damara mole rat<br></p>
+</fieldset>
+  <a style=" color:#99004C" href="/">Main page</a>
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+We are now trying to 'break' the program
+First we will introduce a number above 199 (which is the current number of available species at day 02/05/2019)
+[direction = http://localhost:8000/listSpecies?limit=201] and obtain the following:
+
+--- [http://localhost:8000/listSpecies?limit=201] output --------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species list</title>
+</head>
+<body style="background-color: mistyrose">
+  <h1 style="color:deeppink;font-family:arial;font-size:200%;text-align:center">Species list</h1>
+  <h2 style="color:deeppink;font-family:arial;font-size:100%;text-align:center">Cannot show more than 199</h2>
+  <fieldset>
+  <legend style="color:hotpink;font-family:arial;font-size:100%">Species common name</legend>
+   <p >Try again with an integer between 0 and 199</p>
+</fieldset>
+  <a style=" color:#99004C" href="/">Main page</a>
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------------------
+We will now introduce a word for the limit [direction = http://localhost:8000/listSpecies?limit=hellow]
+----- output for [http://localhost:8000/listSpecies?limit=hellow] ------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species list</title>
+</head>
+<body style="background-color: mistyrose">
+  <h1 style="color:deeppink;font-family:arial;font-size:200%;text-align:center">Species list</h1>
+  <h2 style="color:deeppink;font-family:arial;font-size:100%;text-align:center">Cannot display information</h2>
+  <fieldset>
+  <legend style="color:hotpink;font-family:arial;font-size:100%">Species common name</legend>
+   <p >Limit must be a positive integer number</p>
+</fieldset>
+  <a style=" color:#99004C" href="/">Main page</a>
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------------------
+If we access the page manually and do not introduce the word 'limit' we will obtain the following:
+direction = [http://localhost:8000/listSpecies]
+------ output for [http://localhost:8000/listSpecies] ------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Species list</title>
+</head>
+<body style="background-color: mistyrose">
+  <h1 style="color:deeppink;font-family:arial;font-size:200%;text-align:center">Species list</h1>
+  <h2 style="color:deeppink;font-family:arial;font-size:100%;text-align:center">Showing all available species:</h2>
+
+  <fieldset>
+  <legend style="color:hotpink;font-family:arial;font-size:100%">Species common name</legend>
+   <p >1.) Mouse also known as house mouse<br>2.) Human also known as human<br>3.) Guinea Pig also known as domestic guinea pig<br>4.) Mouse CBA/J also known as house mouse<br>5.) Midas cichlid also known as Midas cichlid<br>6.) Anole lizard also known as green anole<br>7.) Capuchin also known as White-headed capuchin<br>8.) Ballan wrasse also known as ballan wrasse<br>9.) Leopard also known as leopard<br>10.) Fugu also known as torafugu<br>11.) Black snub-nosed monkey also known as Black snub-nosed monkey<br>12.) Zig-zag eel also known as zig-zag eel<br>13.) Blue-crowned manakin also known as blue-crowned manakin<br>14.) Damara mole rat also known as Damara mole rat<br>15.) Opossum also known as gray short-tailed opossum<br>16.) Donkey also known as donkey<br>17.) Platyfish also known as southern platyfish<br>18.) Little spotted kiwi also known as little spotted kiwi<br>19.) Ruff also known as ruff<br>20.) Stickleback also known as three-spined stickleback<br>21.) Chinese hamster PICR also known as Chinese hamster<br>22.) Steppe mouse also known as steppe mouse<br>23.) Indian medaka also known as Indian medaka<br>24.) Upper Galilee mountains blind mole rat also known as Upper Galilee mountains blind mole rat<br>25.) Abingdon island giant tortoise also known as Abingdon island giant tortoise<br>26.) Spiny chromis also known as spiny chromis<br>27.) Asian bonytongue also known as Asian bonytongue<br>28.) Tasmanian devil also known as Tasmanian devil<br>29.) Chicken also known as chicken<br>30.) Coelacanth also known as coelacanth<br>31.) Helmeted guineafowl also known as helmeted guineafowl<br>32.) Mouse A/J also known as house mouse<br>33.) Sailfin molly also known as sailfin molly<br>34.) Koala also known as koala<br>35.) Mouse FVB/NJ also known as house mouse<br>36.) Chinese hamster CHOK1GS also known as Chinese hamster<br>37.) Mouse LP/J also known as house mouse<br>38.) Naked mole-rat female also known as naked mole-rat<br>39.) Spoon-billed sandpiper also known as Spoon-billed sandpiper<br>40.) Duck also known as common mallard<br>41.) Bolivian squirrel monkey also known as Bolivian squirrel monkey<br>42.) Bengalese finch also known as Bengalese finch<br>43.) Marmoset also known as white-tufted-ear marmoset<br>44.) Sheep also known as Domestic sheep<br>45.) Olive baboon also known as Olive baboon<br>46.) Crab-eating macaque also known as Crab-eating macaque<br>47.) Mainland tiger snake also known as mainland tiger snake<br>48.) Goat also known as Goat<br>49.) Mummichog also known as mummichog<br>50.) American black bear also known as American black bear<br>51.) Mouse NZO/HlLtJ also known as house mouse<br>52.) Wallaby also known as tammar wallaby<br>53.) Dolphin also known as bottlenosed dolphin<br>54.) Western mosquitofish also known as western mosquitofish<br>55.) Cat also known as domestic cat<br>56.) Bonobo also known as bonobo<br>57.) Gibbon also known as Northern white-cheeked gibbon<br>58.) Vervet-AGM also known as African green monkey<br>59.) Cow also known as cattle<br>60.) Clown anemonefish also known as clown anemonefish<br>61.) Shrew mouse also known as Shrew mouse<br>62.) Japanese quail also known as Japanese quail<br>63.) Tarsier also known as Philippine tarsier<br>64.) Great spotted kiwi also known as Great spotted kiwi<br>65.) Pig-tailed macaque also known as Pig-tailed macaque<br>66.) Tuatara also known as tuatara<br>67.) Pink-footed goose also known as pink-footed goose<br>68.) Climbing perch also known as climbing perch<br>69.) Spotted gar also known as Spotted gar<br>70.) Golden snub-nosed monkey also known as Golden snub-nosed monkey<br>71.) Daurian ground squirrel also known as Daurian ground squirrel<br>72.) Amazon molly also known as Amazon molly<br>73.) Turbot also known as turbot<br>74.) Algerian mouse also known as algerian mouse<br>75.) Lamprey also known as sea lamprey<br>76.) Xenopus also known as western clawed frog<br>77.) Agassiz's desert tortoise also known as Agassiz's desert tortoise<br>78.) American bison also known as American bison<br>79.) Mouse 129S1/SvImJ also known as house mouse<br>80.) Channel catfish also known as channel catfish<br>81.) Degu also known as Degu<br>82.) Angola colobus also known as Angola colobus<br>83.) Golden-collared manakin also known as golden-collared manakin<br>84.) Eastern happy also known as eastern happy<br>85.) Greater bamboo lemur also known as greater bamboo lemur<br>86.) Mouse WSB/EiJ also known as western european house mouse<br>87.) Armadillo also known as nine-banded armadillo<br>88.) Mangrove rivulus also known as mangrove rivulus<br>89.) Mouse DBA/2J also known as house mouse<br>90.) Arctic ground squirrel also known as Arctic ground squirrel<br>91.) Gorilla also known as Western Lowland Gorilla<br>92.) Mouse Lemur also known as gray mouse lemur<br>93.) Drill also known as Drill<br>94.) Central bearded dragon also known as central bearded dragon<br>95.) American mink also known as American mink<br>96.) Great Tit also known as Great Tit<br>97.) Macaque also known as rhesus monkey<br>98.) Platypus also known as platypus<br>99.) Japanese medaka HNI also known as Japanese medaka HNI<br>100.) Hagfish also known as Inshore hagfish<br>101.) Dingo also known as dingo<br>102.) Zebrafish also known as zebrafish<br>103.) Mouse NOD/ShiLtJ also known as house mouse<br>104.) Bicolor damselfish also known as bicolor damselfish<br>105.) Long-tailed chinchilla also known as Long-tailed chinchilla<br>106.) Mouse C57BL/6NJ also known as house mouse<br>107.) Mexican tetra also known as Mexican tetra<br>108.) Squirrel also known as thirteen-lined ground squirrel<br>109.) Alpaca also known as alpaca<br>110.) Australian saltwater crocodile also known as Australian saltwater crocodile<br>111.) White-throated sparrow also known as white-throated sparrow<br>112.) Orange clownfish also known as orange clownfish<br>113.) Tiger also known as Tiger<br>114.) Turkey also known as domestic turkey<br>115.) Ugandan red Colobus also known as Ugandan red Colobus<br>116.) Alpine marmot also known as Alpine marmot<br>117.) Common canary also known as common canary<br>118.) Okarito brown kiwi also known as Okarito brown kiwi<br>119.) Argentine black and white tegu also known as Argentine black and white tegu<br>120.) Sloth also known as Hoffmann's two-fingered sloth<br>121.) Ryukyu mouse also known as Ryukyu mouse<br>122.) Shrew also known as European shrew<br>123.) Zebra Finch also known as zebra finch<br>124.) Gelada also known as gelada<br>125.) Tiger tail seahorse also known as tiger tail seahorse<br>126.) Brazilian guinea pig also known as Brazilian guinea pig<br>127.) Periophthalmus magnuspinnatus also known as Periophthalmus magnuspinnatus<br>128.) Ma's night monkey also known as Ma's night monkey<br>129.) Microbat also known as little brown bat<br>130.) Pig also known as pig<br>131.) Coquerel's sifaka also known as Coquerel's sifaka<br>132.) Drosophila melanogaster also known as fruit fly<br>133.) Makobe Island cichlid also known as Makobe Island cichlid<br>134.) Lesser hedgehog tenrec also known as small Madagascar hedgehog<br>135.) Dark-eyed junco also known as dark-eyed junco<br>136.) Red fox also known as red fox<br>137.) Chimpanzee also known as chimpanzee<br>138.) Chinese hamster CriGri also known as Chinese hamster<br>139.) Greater amberjack also known as greater amberjack<br>140.) Hedgehog also known as western European hedgehog<br>141.) Elephant also known as African savanna elephant<br>142.) Lyretail cichlid also known as lyretail cichlid<br>143.) Chinese softshell turtle also known as Chinese softshell turtle<br>144.) Prairie vole also known as vole<br>145.) Ocean sunfish also known as ocean sunfish<br>146.) Polar bear also known as Polar bear<br>147.) Emu also known as emu<br>148.) Rabbit also known as rabbit<br>149.) Monterrey platyfish also known as Monterrey platyfish<br>150.) Sheepshead minnow also known as sheepshead minnow<br>151.) C.intestinalis also known as Sea squirt Ciona intestinalis<br>152.) Red-bellied piranha also known as red-bellied piranha<br>153.) Northern pike also known as northern pike<br>154.) Pika also known as American pika<br>155.) Ferret also known as Domestic ferret<br>156.) C.savignyi also known as Sea squirt Ciona savignyi<br>157.) Mongolian gerbil also known as Mongolian gerbil<br>158.) Paramormyrops kingsleyae also known as Paramormyrops kingsleyae<br>159.) Lesser Egyptian jerboa also known as Lesser Egyptian jerboa<br>160.) Kangaroo rat also known as Ord's kangaroo rat<br>161.) Sooty mangabey also known as Sooty mangabey<br>162.) Tilapia also known as Nile tilapia<br>163.) Orangutan also known as Bornean orangutan<br>164.) Painted turtle also known as Western painted turtle<br>165.) Zebra mbuna also known as zebra mbuna<br>166.) Horse also known as horse<br>167.) Golden Hamster also known as Golden Hamster<br>168.) Megabat also known as large flying fox<br>169.) Yellowtail amberjack also known as yellowtail amberjack<br>170.) Blue tit also known as blue tit<br>171.) Mouse PWK/PhJ also known as eastern european house mouse<br>172.) Cod also known as Atlantic cod<br>173.) Burton's mouthbrooder also known as Burton's mouthbrooder<br>174.) Saccharomyces cerevisiae also known as baker's yeast<br>175.) Tongue sole also known as tongue sole<br>176.) Dog also known as dog<br>177.) Swamp eel also known as swamp eel<br>178.) Panda also known as giant panda<br>179.) American beaver also known as American beaver<br>180.) Budgerigar also known as Budgie<br>181.) Northern American deer mouse also known as Northern American deer mouse<br>182.) Flycatcher also known as Collared flycatcher<br>183.) Wild yak also known as wild yak<br>184.) Mouse BALB/cJ also known as house mouse<br>185.) Mouse CAST/EiJ also known as south eastern house mouse<br>186.) Rat also known as Norway rat<br>187.) Bushbaby also known as small-eared galago<br>188.) Naked mole-rat male also known as naked mole-rat<br>189.) Caenorhabditis elegans also known as C.elegans<br>190.) Guppy also known as guppy<br>191.) Japanese medaka HSOK also known as Japanese medaka HSOK<br>192.) Tetraodon also known as spotted green pufferfish<br>193.) Chilean tinamou also known as birds<br>194.) Tree Shrew also known as northern tree shrew<br>195.) Mouse C3H/HeJ also known as house mouse<br>196.) Shortfin molly also known as shortfin molly<br>197.) Japanese medaka HdrR also known as Japanese medaka HdrR<br>198.) Hyrax also known as cape rock hyrax<br>199.) Mouse AKR/J also known as house mouse<br></p>
+</fieldset>
+  <a style=" color:#99004C" href="/">Main page</a>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+Is /karyotype working properly?
+------------------------------------------------------------------------------------------------------------------------
+We want to get the karyotype from a human, using the following direction= [http://localhost:8000/karyotype?specie=human]
+--- output for [http://localhost:8000/karyotype?specie=human] ----------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Karyotype</title>
+</head>
+<body style="background-color: palegreen">
+  <h1 style="color:seagreen;font-family:arial;font-size:200%;text-align:center">KARYOTYPE</h1>
+  <h2 style="color:seagreen;font-family:arial;font-size:100%;text-align:center">human</h2>
+  <fieldset>
+  <legend style="color:limegreen;font-family:arial;font-size:100%">Chromosome's info</legend>
+   <p >1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>X<br>Y<br>MT<br></p>
+</fieldset>
+  <a style=" color:springgreen" href="/">Main page</a>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+sometimes, the karyotype is not available when the specie is correct. We will obtain this using for example
+direction = http://localhost:8000/karyotype?specie=tiger
+-------- output for [http://localhost:8000/karyotype?specie=tiger]------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+
+<title>Karyotype</title>
+</head>
+<body style="background-color: palegreen">
+  <h1 style="color:seagreen;font-family:arial;font-size:200%;text-align:center">KARYOTYPE</h1>
+  <h2 style="color:seagreen;font-family:arial;font-size:100%;text-align:center">tiger</h2>
+
+  <fieldset>
+  <legend style="color:limegreen;font-family:arial;font-size:100%">Chromosome's info</legend>
+   <p >Karyotype not available<br>Please try again</p>
+</fieldset>
+
+
+
+
+  <a style=" color:springgreen" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+We will now try to introduce a specie wrongly, this means a word which is actually not a specie (e.g blanca)
+direction = [http://localhost:8000/karyotype?specie=blanca]
+---output for [http://localhost:8000/karyotype?specie=blanca]-----------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Karyotype</title>
+</head>
+<body style="background-color: palegreen">
+  <h1 style="color:seagreen;font-family:arial;font-size:200%;text-align:center">KARYOTYPE</h1>
+  <h2 style="color:seagreen;font-family:arial;font-size:100%;text-align:center">blanca</h2>
+  <fieldset>
+  <legend style="color:limegreen;font-family:arial;font-size:100%">Chromosome's info</legend>
+   <p >Sorry,no information found for blanca</p>
+</fieldset>
+  <a style=" color:springgreen" href="/">Main page</a>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+If we do not introduce the specie we will obtain the following (direction = http://localhost:8000/karyotype?specie=)
+----output for [http://localhost:8000/karyotype?specie=]---------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<title>Karyotype</title>
+</head>
+<body style="background-color: palegreen">
+  <h1 style="color:seagreen;font-family:arial;font-size:200%;text-align:center">KARYOTYPE</h1>
+  <h2 style="color:seagreen;font-family:arial;font-size:100%;text-align:center">Error</h2>
+  <fieldset>
+  <legend style="color:limegreen;font-family:arial;font-size:100%">Chromosome's info</legend>
+   <p >Please introduce a specie</p>
+</fieldset>
+  <a style=" color:springgreen" href="/">Main page</a>
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+Check /chromosomeLength
+-----------------------------------------------------------------------------------------------------------------------
+We will first introduce a valid specie and a valid chromosome form the main page
+ [direction = http://localhost:8000/chromosomeLength?specie=horse&chromo=3]
+ --- output for http://localhost:8000/chromosomeLength?specie=horse&chromo=3 ------------------------------------------
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Length for chromosome 3 of horse is </legend>
+   <p style = "text-align: center" >121351753</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+if we now introduce manually changing the order (first chromosome and then specie) we will obtain the same output.
+[direction = http://localhost:8000/chromosomeLength?chromo=3&specie=horse]
+------Output for http://localhost:8000/chromosomeLength?chromo=3&specie=horse------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Length for chromosome 3 of horse is </legend>
+   <p style = "text-align: center" >121351753</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+Now we will introduce the specie wrongly and a valid chromosome
+direction = http://localhost:8000/chromosomeLength?chromo=3&specie=house
+-----output for http://localhost:8000/chromosomeLength?chromo=3&specie=house-------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Can´t find karyotype for house</legend>
+   <p style = "text-align: center" >Unknown</p>
+</fieldset>
+
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+Now we will introduce a valid specie but a wrong chromosome (more than in its karyotype)
+direction = http://localhost:8000/chromosomeLength?chromo=37&specie=mouse
+----- output for http://localhost:8000/chromosomeLength?chromo=37&specie=mouse------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Chromosome not found </legend>
+   <p style = "text-align: center" >Only numbers up to 22 available</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+If a letter is introduced, it will check whether it is x or y or mt or other. If it is other it will not work.
+direction = http://localhost:8000/chromosomeLength?specie=human&chromo=x
+------ out put for http://localhost:8000/chromosomeLength?specie=human&chromo=x----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Length for chromosome: x</legend>
+   <p style = "text-align: center" >156040895</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+if any other character is introduced direction= http://localhost:8000/chromosomeLength?specie=human&chromo=p
+-------output for http://localhost:8000/chromosomeLength?specie=human&chromo=p-----------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Chromosome must be number </legend>
+   <p style = "text-align: center" >Try again with some number between 0 and 25</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+-----------------------------------------------------------------------------------------------------------------------
+if we do not introduce parameters
+direction = http://localhost:8000/chromosomeLength?specie=&chromo=3
+----output for http://localhost:8000/chromosomeLength?specie=&chromo=3-------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Error</legend>
+   <p style = "text-align: center" >Please introduce a specie</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+If we not introduce the chromosome
+direction = http://localhost:8000/chromosomeLength?specie=zebra&chromo=
+---------output for http://localhost:8000/chromosomeLength?specie=zebra&chromo= ---------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Error</legend>
+   <p style = "text-align: center" >Please introduce a chromosome</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+if we do not introduce any parameter
+direction = http://localhost:8000/chromosomeLength
+-----output for http://localhost:8000/chromosomeLength-----------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+<title>Chromosome length</title>
+</head>
+<body style="background-color: plum">
+  <h1 style="color:darkmagenta;font-family:arial;font-size:200%;text-align:center">Chromosome Length</h1>
+  <h2 style="color:darkmagenta;font-family:arial;font-size:100%;text-align:center">Displaying information for the selected chromosome</h2>
+
+  <fieldset>
+  <legend style="color:indigo;font-family:arial;font-size:100%">Error</legend>
+   <p style = "text-align: center" >Chromosomes and species MUST be both specified</p>
+</fieldset>
+  <a style=" color:mediumorchid" href="/">Main page</a>
+
+</body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+ANY OTHER DIRECTION
+------------------------------------------------------------------------------------------------------------------------
+direction = http://localhost:8000/chromosomeLengthbutiamtryingtobreaktheprogram
+output:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Error </title>
+  </head>
+  <body style="background-color:Crimson">
+    <h1 style="color:maroon; text-align:center;font-family:arial; font-size:300%">Error!!</h1>
+    <h3 style="text-align:Center">Error in path was registered</h3>
+
+      <fieldset>
+  <legend style="color: darkred">Try the following path</legend>
+   <a style=" color:lightcoral" href="/">Main page</a>
+</fieldset>
+  </body>
+</html>
+------------------------------------------------------------------------------------------------------------------------
