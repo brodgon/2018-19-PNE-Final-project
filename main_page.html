@@ -11,7 +11,9 @@
 
  <body style="background-color:lavender">
   <h1 style="color:darkblue;font-family:arial;font-size:300%;text-align:center"> WELCOME TO THE GENOME PROJECT!</h1>
-<h2 style="color:darkblue;font-family:arial;font-size:150%;text-align:center">What information do you want to get?</h2>
+<h2 style="color:darkblue;font-family:arial;font-size:150%;text-align:center">We are getting human and vertebrates information!</h2>
+  <fieldset>
+  <legend style = "color:slateblue; font-family:arial,font-size:150%"> Species general information</legend>
 <p></p>
   <fieldset>
       <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Species List</legend>
@@ -19,8 +21,11 @@
     How many species do you want to know about? (optional)
     <input type="text" name="limit" style="color:navy;background-color:aliceblue">
       <p style="color:navy">Limit must be an integer number!</p>
-     <br>
-      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get species info">
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get species list">
   </form>
       </fieldset>
   <p></p>
@@ -29,8 +34,11 @@
     <form action = "karyotype">
     What specie's karyotype do you want to know?
     <input type="text" name="specie" style="color:navy;background-color:aliceblue">
-     <br><br>
-      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get karyotype ">
+       <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get specie's karyotype ">
   </form>
   </fieldset>
   <p></p>
@@ -43,11 +51,85 @@
      <br><br>
         Introduce the number of chromosome
         <input type="text" name="chromo" style="color:navy;background-color:aliceblue">
+        <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get length for the chromosome">
+  </form>
+      </fieldset>
+      </fieldset>
+  <p></p>
+  <br>
+  <fieldset>
+      <legend style = "color:slateblue; font-family:arial,font-size:150%"> Human genes information</legend>
+      <p></p>
+        <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center"> Sequence of a human gene</legend>
+  <form action = "geneSeq" >
+    Which human gene are you willing to get its sequence?
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
      <br><br>
-      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get length ">
+       <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene sequence">
   </form>
       </fieldset>
   <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene info</legend>
+  <form action = "geneInfo" >
+    Which human gene do you want to know some information about?
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
+    <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene info">
+  </form>
+      </fieldset>
+
+  <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene calculations</legend>
+  <form action = "geneCalc" >
+    Which human gene do you want to know it's sequence information?
+      <br><br>
+      <p style="color=navy">You will get the length and the bases percentage of the gene's sequence</p>
+    <input type="text" name="gene" style="color:navy;background-color:aliceblue">
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene calculations">
+  </form>
+      </fieldset>
+        <p></p>
+              <fieldset>
+      <legend  style="color:darkblue;font-family:arial;font-size:100%;text-align:center">Human Gene List</legend>
+  <form action = "geneList" >
+    For which chromosome do you want to obtain its' genes?
+      <br><br>
+      <p style="color=navy">You must introduce a chromosome number for humans and the region you want to iterate (start and end)</p>
+    Chromosome number
+      <input type="text" name="chromo" style="color:navy;background-color:aliceblue">
+     <br><br>
+      Start of the region
+      <input type="text" name="start" style="color:navy;background-color:aliceblue">
+     <br><br>
+      End of region
+      <input type="text" name="end" style="color:navy;background-color:aliceblue">
+      <br>
+     Json format
+      <input type="checkbox" name="json" value="1" style="color:navy;background-color:aliceblue">
+      <br><br>
+      <input style="color:#6960EC;background-color:aliceblue" type="submit" value="Get gene list">
+  </form>
+      </fieldset>
+
+  </fieldset>
  <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Main page final project </h3>
   <h3 style="color:#3090C7;font-family:verdana;font-size:70%;text-align:right">Blanca Rodriguez Gonzalez (47588293M)</h3>
 
